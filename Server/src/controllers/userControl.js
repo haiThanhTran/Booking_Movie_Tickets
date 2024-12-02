@@ -113,7 +113,7 @@ exports.loginUser = async (req, res) => {
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       secure: false,
-      sameSite: "strict",
+      sameSite: "Lax",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 ngày
     });
 
@@ -146,6 +146,7 @@ exports.verifyUser = async (req, res) => {
 
 // Làm mới Access Token
 exports.refreshToken = (req, res) => {
+  console.log("request", req.cookies);
   const refreshToken = req.cookies.refreshToken; // Lấy Refresh Token từ cookie
   if (!refreshToken) return res.sendStatus(401); // Không có Refresh Token
 

@@ -9,9 +9,9 @@ exports.authenticateToken = (req, res, next) => {
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) {
       if (err.name === "TokenExpiredError") {
-        return res.status(403).json({ message: "Access Token đã hết hạn" });
+        return res.status(401).json({ message: "Access Token đã hết hạn" });
       }
-      return res.status(403).json({ message: "Token không hợp lệ" });
+      return res.status(401).json({ message: "Token không hợp lệ" });
     }
     req.user = user;
     next();
