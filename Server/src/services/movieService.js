@@ -6,11 +6,11 @@ exports.getMovies = async () => {
 };
 
 exports.getCurrentMovies = async () => {
-  return await Movie.find({ status: "current" });
+  return await Movie.find({ status: "Đang chiếu" });
 };
 
 exports.getUpcomingMovies = async () => {
-  return await Movie.find({ status: "upcoming" });
+  return await Movie.find({ status: "Sắp chiếu" });
 };
 
 exports.getMoviesById = async (id) => {

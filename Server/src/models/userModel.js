@@ -31,4 +31,5 @@ const userSchema = new mongoose.Schema({
   verificationToken: { type: String, required: false }, // Thêm trường token xác minh
 });
 
-module.exports = mongoose.model("User", userSchema);
+
+module.exports = mongoose.model("User", userSchema, "users");

@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
 exports.registerUser = async (req, res) => {
   try {
     const { username, email, password, role } = req.body;
-    console.log("req", req.body);
+
     // Kiểm tra nếu email đã tồn tại
     const emailExist = await userService.findUserByEmail(email);
     if (emailExist) return res.status(400).json({ error: "Email đã tồn tại" });
@@ -81,9 +81,13 @@ exports.loginUser = async (req, res) => {
 
     // Tìm người dùng theo email
     const user = await userService.findUserByEmail(email);
-    if (!user) 
-      return res.json({ error: "Tài khoản hoặc Mật khẩu sai. Vui lòng đăng nhập lại." });
-    
+    if (!user) {
+      return res
+        .status(400)
+        .json({
+          error: "Tài khoản hoặc Mật khẩu sai. Vui lòng đăng nhập lại.",
+        });
+    }
 
     // Kiểm tra tài khoản đã được xác minh chưa
     if (!user.isVerified) {
@@ -101,7 +105,7 @@ exports.loginUser = async (req, res) => {
     const accessToken = jwt.sign(
       { id: user._id, role: user.role },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "15m" }
+      { expiresIn: "1m" }
     );
     const refreshToken = jwt.sign(
       { id: user._id },
@@ -110,18 +114,11 @@ exports.loginUser = async (req, res) => {
     );
 
     // Lưu Refresh Token trong cookie HttpOnly
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: true,
-      secure: false,
-      sameSite: "Lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 ngày
-    });
-
-    res.json({ userInfo: user, accessToken });
+    res.json({ userInfo: user, accessToken, refreshToken });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-}
+};
 
 exports.verifyUser = async (req, res) => {
   try {
@@ -147,7 +144,7 @@ exports.verifyUser = async (req, res) => {
 // Làm mới Access Token
 exports.refreshToken = (req, res) => {
   console.log("request", req.cookies);
-  const refreshToken = req.cookies.refreshToken; // Lấy Refresh Token từ cookie
+  const { refreshToken } = req.body;
   if (!refreshToken) return res.sendStatus(401); // Không có Refresh Token
 
   // Xác minh Refresh Token
@@ -176,6 +173,5 @@ exports.refreshToken = (req, res) => {
 
 // Đăng xuất
 exports.logoutUser = (req, res) => {
-  res.clearCookie("refreshToken");
   res.json({ message: "Đã đăng xuất" });
 };
