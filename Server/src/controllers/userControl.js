@@ -41,7 +41,7 @@ exports.registerUser = async (req, res) => {
       verificationToken,
     };
 
-    const savedUser = await userService.createUser(userData);
+
 
     const verificationLink = `${req.protocol}://${req.get(
       "host"

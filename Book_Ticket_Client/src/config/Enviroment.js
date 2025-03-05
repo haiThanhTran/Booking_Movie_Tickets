@@ -1,7 +1,8 @@
-// import "dotenv/config";
+import "dotenv/config";
 
-// const env = {
-//   FILM_API: process.env.FILM_API
-// };
+const env = {
+  FILM_API: process.env.FILM_API
+  
+};
 
-// export default env;
+export default env;
