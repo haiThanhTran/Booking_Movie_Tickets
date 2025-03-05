@@ -1,0 +1,50 @@
+[
+  {
+    "_id": {
+      "$oid": "67b34c7426c6d1346c550009"
+    },
+    "showtimeId": {
+      "$oid": "67b34c7426c6d1346c55000b"
+    },
+    "seats": [
+      {
+        "row": "E",
+        "col": 4,
+        "seatType": "standard"
+      },
+      {
+        "row": "E",
+        "col": 5,
+        "seatType": "standard"
+      }
+    ],
+    "totalPrice": 150000,
+    "paymentMethod": "VNPAY",
+    "paymentStatus": "success",
+    "bookingCode": "BK001234"
+  },
+  {
+    "_id": {
+      "$oid": "67b34c7426c6d1346c55000a"
+    },
+    "showtimeId": {
+      "$oid": "67b34c7426c6d1346c55000c"
+    },
+    "seats": [
+      {
+        "row": "C",
+        "col": 1,
+        "seatType": "vip"
+      },
+      {
+        "row": "C",
+        "col": 2,
+        "seatType": "vip"
+      }
+    ],
+    "totalPrice": 180000,
+    "paymentMethod": "Credit Card",
+    "paymentStatus": "pending",
+    "bookingCode": "BK005678"
+  }
+]

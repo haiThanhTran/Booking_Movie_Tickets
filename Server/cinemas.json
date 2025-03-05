@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "67b34c7426c6d1346c550000",
+    "name": "Galaxy Mipec Long Biên",
+    "address": "Tầng 5, TTTM Mipec Long Biên, Số 2, Long Biên, Hà Nội",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        105.8724,
+        21.0375
+      ]
+    }
+  },
+  {
+    "_id": "67b34c7426c6d1346c550004",
+    "name": "CGV Vincom Bà Triệu",
+    "address": "Tầng 6, Vincom Center Bà Triệu, 191 Bà Triệu, Hà Nội",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        105.8375,
+        21.0231
+      ]
+    }
+  },
+  {
+    "_id": "67b34c7426c6d1346c550008",
+    "name": "Lotte Cinema Landmark",
+    "address": "Tầng 5, Keangnam Landmark 72, Phạm Hùng, Hà Nội",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        105.7829,
+        21.0138
+      ]
+    }
+  }
+]

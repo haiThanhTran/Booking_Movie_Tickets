@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+import { env } from "./enviroment";
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/movie-booking", {
+    await mongoose.connect(env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
